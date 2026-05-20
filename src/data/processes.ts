@@ -10,6 +10,8 @@ export interface ProcessStep {
   note?: string;
   timer?: string;
   branches?: { label: string; description: string; color: "green" | "amber" | "red" | "orange" }[];
+  isDecision?: boolean;
+  decision?: { yes: string; no: string };
 }
 
 export interface ProcessFlow {
