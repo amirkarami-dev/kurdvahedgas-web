@@ -14,7 +14,7 @@ export default function LoginPage() {
 
       {/* Glow */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-blue-600/15 rounded-full blur-[120px]" />
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-emerald-600/15 rounded-full blur-[120px]" />
       </div>
 
       <CircuitBackground opacity={0.08} />

@@ -42,7 +42,7 @@ export function ArchiveClient({ documents }: Props) {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-24 pb-16">
       <div className="mb-8">
         <h1 className="text-3xl sm:text-4xl font-bold text-[var(--text-primary)]">آرشیو اسناد</h1>
-        <p className="text-[var(--text-secondary)] mt-2">مرکز دانلود اسناد، فرم‌ها و مقررات دفتر اجرایی</p>
+        <p className="text-[var(--text-secondary)] mt-2">مرکز دانلود اسناد، فرم‌ها و مقررات واحد نظارت گازرسانی</p>
       </div>
 
       <div className="grid lg:grid-cols-4 gap-6">
@@ -50,7 +50,7 @@ export function ArchiveClient({ documents }: Props) {
         <aside className="lg:col-span-1">
           <div className="rounded-2xl border border-[var(--border)] bg-[var(--bg-elevated)] p-4 sticky top-20">
             <h2 className="text-sm font-semibold text-[var(--text-primary)] mb-3 flex items-center gap-2">
-              <Folder className="w-4 h-4 text-blue-400" />
+              <Folder className="w-4 h-4 text-emerald-400" />
               دسته‌بندی‌ها
             </h2>
             <ul className="space-y-1">
@@ -60,7 +60,7 @@ export function ArchiveClient({ documents }: Props) {
                   className={cn(
                     "w-full text-right px-3 py-2 rounded-xl text-sm flex items-center justify-between transition-colors",
                     activeCategory === "همه"
-                      ? "bg-blue-600/15 text-blue-400 font-medium"
+                      ? "bg-emerald-600/15 text-emerald-400 font-medium"
                       : "text-[var(--text-secondary)] hover:bg-[var(--bg-raised)]"
                   )}
                 >
@@ -77,7 +77,7 @@ export function ArchiveClient({ documents }: Props) {
                     className={cn(
                       "w-full text-right px-3 py-2 rounded-xl text-sm flex items-center justify-between transition-colors",
                       activeCategory === name
-                        ? "bg-blue-600/15 text-blue-400 font-medium"
+                        ? "bg-emerald-600/15 text-emerald-400 font-medium"
                         : "text-[var(--text-secondary)] hover:bg-[var(--bg-raised)]"
                     )}
                   >
@@ -103,13 +103,13 @@ export function ArchiveClient({ documents }: Props) {
                 placeholder="جستجو در اسناد..."
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                className="w-full pr-10 pl-4 py-2.5 rounded-xl border border-[var(--border)] bg-[var(--bg-elevated)] text-[var(--text-primary)] placeholder:text-[var(--text-muted)] focus:outline-none focus:border-blue-500 text-sm"
+                className="w-full pr-10 pl-4 py-2.5 rounded-xl border border-[var(--border)] bg-[var(--bg-elevated)] text-[var(--text-primary)] placeholder:text-[var(--text-muted)] focus:outline-none focus:border-emerald-500 text-sm"
               />
             </div>
             <select
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value as typeof sortBy)}
-              className="px-4 py-2.5 rounded-xl border border-[var(--border)] bg-[var(--bg-elevated)] text-[var(--text-primary)] text-sm focus:outline-none focus:border-blue-500"
+              className="px-4 py-2.5 rounded-xl border border-[var(--border)] bg-[var(--bg-elevated)] text-[var(--text-primary)] text-sm focus:outline-none focus:border-emerald-500"
             >
               <option value="date">ترتیب: تاریخ</option>
               <option value="downloads">ترتیب: بیشترین دانلود</option>
@@ -141,7 +141,7 @@ export function ArchiveClient({ documents }: Props) {
                   >
                     <td className="px-4 py-4">
                       <div className="flex items-start gap-2">
-                        <FileText className="w-4 h-4 text-blue-400 mt-0.5 shrink-0" />
+                        <FileText className="w-4 h-4 text-emerald-400 mt-0.5 shrink-0" />
                         <div>
                           <div className="flex items-center gap-1.5">
                             <span className="text-[var(--text-primary)] font-medium line-clamp-1">{doc.title}</span>
@@ -154,7 +154,7 @@ export function ArchiveClient({ documents }: Props) {
                       </div>
                     </td>
                     <td className="px-4 py-4 hidden sm:table-cell">
-                      <span className="text-xs bg-blue-600/15 text-blue-400 px-2 py-1 rounded-lg">{doc.category}</span>
+                      <span className="text-xs bg-emerald-600/15 text-emerald-400 px-2 py-1 rounded-lg">{doc.category}</span>
                     </td>
                     <td className="px-4 py-4 hidden md:table-cell text-xs text-[var(--text-muted)]">
                       {formatJalaliDate(doc.jalaliDate)}
@@ -168,7 +168,7 @@ export function ArchiveClient({ documents }: Props) {
                           href={doc.fileUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-blue-600/15 hover:bg-blue-600/25 text-blue-400 text-xs font-medium transition-colors"
+                          className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-600/15 hover:bg-blue-600/25 text-emerald-400 text-xs font-medium transition-colors"
                         >
                           <Download className="w-3.5 h-3.5" />
                           PDF

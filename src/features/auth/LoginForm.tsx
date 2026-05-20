@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { Eye, EyeOff, Zap, Shield, LogIn } from "lucide-react";
+import { Eye, EyeOff, Flame, Shield, LogIn } from "lucide-react";
 import Link from "next/link";
 
 export function LoginForm() {
@@ -18,10 +18,10 @@ export function LoginForm() {
     <div className="glass rounded-3xl border border-[var(--border)] p-8 shadow-2xl shadow-black/30 w-full">
       {/* Header */}
       <div className="text-center mb-8">
-        <div className="w-16 h-16 rounded-2xl bg-blue-600 flex items-center justify-center mx-auto mb-4 shadow-lg shadow-blue-600/40">
-          <Zap className="w-8 h-8 text-white" />
+        <div className="w-16 h-16 rounded-2xl bg-emerald-600 flex items-center justify-center mx-auto mb-4 shadow-lg shadow-emerald-600/40">
+          <Flame className="w-8 h-8 text-white" />
         </div>
-        <h1 className="text-xl font-bold text-[var(--text-primary)]">دفتر اجرایی نظارت برق</h1>
+        <h1 className="text-xl font-bold text-[var(--text-primary)]">واحد نظارت گازرسانی</h1>
         <p className="text-xs text-[var(--text-muted)] mt-1">سازمان نظام مهندسی ساختمان استان کردستان</p>
       </div>
 
@@ -33,7 +33,7 @@ export function LoginForm() {
             onClick={() => setUserType(type)}
             className={`py-2 rounded-lg text-xs font-medium transition-all ${
               userType === type
-                ? "bg-blue-600 text-white shadow-sm"
+                ? "bg-emerald-600 text-white shadow-sm"
                 : "text-[var(--text-muted)] hover:text-[var(--text-secondary)]"
             }`}
           >
@@ -53,7 +53,7 @@ export function LoginForm() {
             type="text"
             autoComplete="username"
             aria-label="نام کاربری"
-            className="w-full px-4 py-3 rounded-xl border border-[var(--border)] bg-[var(--bg-base)] text-[var(--text-primary)] placeholder:text-[var(--text-muted)] focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500/30 transition-all text-sm"
+            className="w-full px-4 py-3 rounded-xl border border-[var(--border)] bg-[var(--bg-base)] text-[var(--text-primary)] placeholder:text-[var(--text-muted)] focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500/30 transition-all text-sm"
             placeholder="نام کاربری یا شماره ملی"
           />
         </div>
@@ -69,7 +69,7 @@ export function LoginForm() {
               type={showPassword ? "text" : "password"}
               autoComplete="current-password"
               aria-label="کلمه عبور"
-              className="w-full px-4 py-3 rounded-xl border border-[var(--border)] bg-[var(--bg-base)] text-[var(--text-primary)] placeholder:text-[var(--text-muted)] focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500/30 transition-all text-sm pl-10"
+              className="w-full px-4 py-3 rounded-xl border border-[var(--border)] bg-[var(--bg-base)] text-[var(--text-primary)] placeholder:text-[var(--text-muted)] focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500/30 transition-all text-sm pl-10"
               placeholder="••••••••"
             />
             <button
@@ -90,11 +90,11 @@ export function LoginForm() {
               type="checkbox"
               checked={rememberMe}
               onChange={(e) => setRememberMe(e.target.checked)}
-              className="w-4 h-4 rounded border-[var(--border)] bg-[var(--bg-base)] text-blue-600 focus:ring-blue-500/30"
+              className="w-4 h-4 rounded border-[var(--border)] bg-[var(--bg-base)] text-emerald-600 focus:ring-emerald-500/30"
             />
             <span className="text-[var(--text-secondary)]">مرا به خاطر بسپار</span>
           </label>
-          <button type="button" className="text-blue-400 hover:text-blue-300 transition-colors">
+          <button type="button" className="text-emerald-400 hover:text-emerald-300 transition-colors">
             فراموشی رمز
           </button>
         </div>
@@ -102,7 +102,7 @@ export function LoginForm() {
         {/* Submit */}
         <button
           type="submit"
-          className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-medium transition-all duration-200 shadow-lg shadow-blue-600/30 hover:shadow-blue-600/50 mt-2"
+          className="w-full flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-medium transition-all duration-200 shadow-lg shadow-emerald-600/30 hover:shadow-emerald-600/50 mt-2"
         >
           <LogIn className="w-4 h-4" />
           {userTypeLabels[userType]}
@@ -116,7 +116,7 @@ export function LoginForm() {
       </div>
 
       <div className="mt-4 text-center">
-        <Link href="/" className="text-sm text-[var(--text-muted)] hover:text-blue-400 transition-colors">
+        <Link href="/" className="text-sm text-[var(--text-muted)] hover:text-emerald-400 transition-colors">
           بازگشت به صفحه اصلی
         </Link>
       </div>

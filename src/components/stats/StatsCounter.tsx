@@ -43,8 +43,8 @@ function CounterItem({
       transition={{ delay: index * 0.1, duration: 0.5 }}
       className="text-center p-6"
     >
-      <div className="w-14 h-14 rounded-2xl bg-blue-600/15 border border-blue-600/20 flex items-center justify-center mx-auto mb-4">
-        <Icon className="w-7 h-7 text-blue-400" />
+      <div className="w-14 h-14 rounded-2xl bg-emerald-600/15 border border-emerald-600/20 flex items-center justify-center mx-auto mb-4">
+        <Icon className="w-7 h-7 text-emerald-400" />
       </div>
       <div className="text-3xl sm:text-4xl font-extrabold text-[var(--text-primary)] mb-1 tabular-nums">
         {toPersianNumber(count.toLocaleString("en-US"))}{suffix}
@@ -61,8 +61,8 @@ export function StatsCounter({ stats }: { stats: StatItem[] }) {
     <section className="bg-[var(--bg-elevated)] border-y border-[var(--border)]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-16">
         <div className="text-center mb-10">
-          <h2 className="text-2xl sm:text-3xl font-bold text-[var(--text-primary)]">عملکرد دفتر در یک نگاه</h2>
-          <p className="text-[var(--text-secondary)] mt-2">آمار و اطلاعات تجمعی از آغاز فعالیت دفتر اجرایی</p>
+          <h2 className="text-2xl sm:text-3xl font-bold text-[var(--text-primary)]">عملکرد واحد در یک نگاه</h2>
+          <p className="text-[var(--text-secondary)] mt-2">آمار و اطلاعات تجمعی از آغاز فعالیت واحد نظارت گازرسانی</p>
         </div>
         <div ref={ref} className="grid grid-cols-2 lg:grid-cols-4 divide-x divide-x-reverse divide-[var(--border)]">
           {stats.map((stat, i) => (

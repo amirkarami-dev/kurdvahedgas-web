@@ -11,11 +11,18 @@ param(
 
 $ErrorActionPreference = "Stop"
 $Server = "$User@$ServerIP"
-$SshOpts = if ($KeyFile) { @("-i", $KeyFile) } else { @() }
+$PlinkPw = "P@33word@1234"
 
 function SSH([string]$Cmd) {
-    & "C:\Program Files\PuTTY\plink.exe" -pw "P@33word@1234" -batch $Server $Cmd
-    if ($LASTEXITCODE -ne 0) { throw "SSH command failed: $Cmd" }
+    & "C:\Program Files\PuTTY\plink.exe" -pw $PlinkPw -batch $Server $Cmd
+    if ($LASTEXITCODE -ne 0) { throw "SSH command failed" }
+}
+
+# Base64-encode a bash command so plink doesn't need to pass quotes
+function SSHb64([string]$BashScript) {
+    $bytes = [System.Text.Encoding]::UTF8.GetBytes($BashScript)
+    $b64   = [Convert]::ToBase64String($bytes)
+    SSH "echo $b64 | base64 -d | bash"
 }
 
 function Step([string]$Msg) {
@@ -27,7 +34,6 @@ Step "[1/4] npm run build:prod"
 npm run build:prod
 if ($LASTEXITCODE -ne 0) { throw "Build failed" }
 
-# Verify standalone output was generated
 if (-not (Test-Path ".next\standalone")) {
     throw "Standalone output not found. Ensure next.config.ts has output: 'standalone'."
 }
@@ -44,12 +50,11 @@ Copy-Item -Recurse "public"           "$TmpDir\public"
 Copy-Item "Dockerfile"                "$TmpDir\"
 Copy-Item "docker-compose.yml"        "$TmpDir\"
 
-# Include .env.production if present locally
 if (Test-Path ".env.production") {
     Copy-Item ".env.production" "$TmpDir\"
     Write-Host "  .env.production included" -ForegroundColor DarkGray
 } else {
-    Write-Host "  .env.production not found locally — make sure it exists on the server at $DeployPath/.env.production" -ForegroundColor Yellow
+    Write-Host "  .env.production not found locally — make sure it exists on the server" -ForegroundColor Yellow
 }
 
 Compress-Archive -Path "$TmpDir\*" -DestinationPath "deploy.zip" -Force
@@ -60,11 +65,18 @@ Write-Host "  deploy.zip created ($Size MB)"
 # ── 3. Upload ────────────────────────────────────────────────────────────────
 Step "[3/4] Uploading to ${Server}:${DeployPath}"
 SSH "sudo mkdir -p $DeployPath && sudo chown ubuntu:ubuntu $DeployPath"
-& "C:\Program Files\PuTTY\pscp.exe" -pw "P@33word@1234" -batch deploy.zip "${Server}:${DeployPath}/deploy.zip"
+& "C:\Program Files\PuTTY\pscp.exe" -pw $PlinkPw -batch deploy.zip "${Server}:${DeployPath}/deploy.zip"
 Remove-Item deploy.zip
 
 # ── 4. Deploy ────────────────────────────────────────────────────────────────
 Step "[4/4] Deploying on server"
-SSH "python3 -c ""import zipfile; zipfile.ZipFile('$DeployPath/deploy.zip').extractall('$DeployPath/')"" && rm $DeployPath/deploy.zip && cd $DeployPath && docker compose up -d --build"
+$deployScript = @"
+set -e
+python3 -c "import zipfile; zipfile.ZipFile('$DeployPath/deploy.zip').extractall('$DeployPath/')"
+rm "$DeployPath/deploy.zip"
+cd "$DeployPath"
+docker compose up -d --build
+"@
+SSHb64 $deployScript
 
 Step "Done! App is live at https://demo.kurdvahedgas.ir"

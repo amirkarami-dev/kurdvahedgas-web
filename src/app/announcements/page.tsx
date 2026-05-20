@@ -37,7 +37,7 @@ export default async function AnnouncementsPage() {
           {/* Page Title */}
           <div className="mb-8">
             <h1 className="text-3xl sm:text-4xl font-bold text-[var(--text-primary)]">اطلاعیه‌ها</h1>
-            <p className="text-[var(--text-secondary)] mt-2">آخرین اخبار، دستورالعمل‌ها و اطلاعیه‌های دفتر اجرایی</p>
+            <p className="text-[var(--text-secondary)] mt-2">آخرین اخبار، دستورالعمل‌ها و اطلاعیه‌های واحد نظارت گازرسانی</p>
           </div>
 
           {/* Featured */}

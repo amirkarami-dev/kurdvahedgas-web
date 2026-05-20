@@ -27,7 +27,7 @@ export default async function MeetingsPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-24 pb-16">
           <div className="mb-8">
             <h1 className="text-3xl sm:text-4xl font-bold text-[var(--text-primary)]">جلسات و مصوبات</h1>
-            <p className="text-[var(--text-secondary)] mt-2">سوابق جلسات هیئت رئیسه دفتر اجرایی نظارت برق</p>
+            <p className="text-[var(--text-secondary)] mt-2">سوابق جلسات هیئت رئیسه واحد نظارت گازرسانی</p>
           </div>
 
           {/* Status summary */}

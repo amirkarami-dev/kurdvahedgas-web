@@ -43,7 +43,7 @@ export default async function HomePage() {
             </div>
             <Link
               href="/announcements"
-              className="flex items-center gap-1.5 text-sm text-blue-400 hover:text-blue-300 transition-colors"
+              className="flex items-center gap-1.5 text-sm text-emerald-400 hover:text-emerald-300 transition-colors"
             >
               مشاهده همه
               <ArrowLeft className="w-4 h-4" />
@@ -66,11 +66,11 @@ export default async function HomePage() {
             <div className="flex items-center justify-between mb-8">
               <div>
                 <h2 className="text-2xl sm:text-3xl font-bold text-[var(--text-primary)]">آخرین جلسات</h2>
-                <p className="text-[var(--text-secondary)] mt-1">جلسات هیئت رئیسه دفتر اجرایی</p>
+                <p className="text-[var(--text-secondary)] mt-1">جلسات هیئت رئیسه واحد نظارت گازرسانی</p>
               </div>
               <Link
                 href="/meetings"
-                className="flex items-center gap-1.5 text-sm text-blue-400 hover:text-blue-300 transition-colors"
+                className="flex items-center gap-1.5 text-sm text-emerald-400 hover:text-emerald-300 transition-colors"
               >
                 مشاهده همه
                 <ArrowLeft className="w-4 h-4" />
