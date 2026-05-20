@@ -1,0 +1,23 @@
+services:
+  kurdvahedgas-web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: kurdvahedgas-web
+    env_file:
+      - .env.production
+    environment:
+      - NODE_ENV=production
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.kurdvahedgas-web.rule=Host(`demo.kurdvahedgas.ir`)"
+      - "traefik.http.routers.kurdvahedgas-web.entrypoints=websecure"
+      - "traefik.http.routers.kurdvahedgas-web.tls.certresolver=myresolver"
+      - "traefik.http.services.kurdvahedgas-web.loadbalancer.server.port=80"
+    networks:
+      - traefik
+    restart: unless-stopped
+
+networks:
+  traefik:
+    external: true

@@ -1,0 +1,221 @@
+@import "tailwindcss";
+
+/* ── IranSans (main Persian font) ──────────────────────────────────────── */
+@font-face {
+  font-family: 'IranSans';
+  src: url('/fonts/iransans.eot');
+  src: url('/fonts/iransans.eot?#iefix') format('embedded-opentype'),
+       url('/fonts/iransans.woff2')       format('woff2'),
+       url('/fonts/iransans.woff')        format('woff'),
+       url('/fonts/iransans.ttf')         format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ── IranSansNumbers (Persian-digit variant, used first in the stack) ── */
+@font-face {
+  font-family: 'IranSansNumbers';
+  src: url('/fonts/iransansnumbers.eot');
+  src: url('/fonts/iransansnumbers.eot?#iefix') format('embedded-opentype'),
+       url('/fonts/iransansnumbers.woff2')       format('woff2'),
+       url('/fonts/iransansnumbers.woff')        format('woff'),
+       url('/fonts/iransansnumbers.ttf')         format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    /* Core — Gas / Energy Theme */
+    --primary: #0F2B1E;
+    --primary-light: #1A3D2B;
+    --secondary: #059669;
+    --secondary-glow: #10B981;
+    --accent: #06B6D4;
+    --highlight: #D97706;
+    --success: #16A34A;
+    --danger: #DC2626;
+
+    /* Surfaces - Light */
+    --bg-base: #F0FAF4;
+    --bg-elevated: #FFFFFF;
+    --bg-raised: #E6F5EC;
+    --bg-glass: rgba(255, 255, 255, 0.8);
+
+    /* Text */
+    --text-primary: #0F172A;
+    --text-secondary: #475569;
+    --text-muted: #94A3B8;
+
+    /* Borders */
+    --border: rgba(5, 150, 105, 0.15);
+    --border-active: rgba(5, 150, 105, 0.5);
+
+    /* Tailwind compat */
+    --background: var(--bg-base);
+    --foreground: var(--text-primary);
+    --card: var(--bg-elevated);
+    --card-foreground: var(--text-primary);
+    --border-color: var(--border);
+    --radius: 0.75rem;
+
+    /* Admin / UI component tokens */
+    --accent-primary:  #059669;
+    --accent-secondary: #10B981;
+    --bg-primary:   #F0FAF4;
+    --bg-card:      #FFFFFF;
+    --bg-secondary: #ECFDF5;
+    --border-primary: rgba(5, 150, 105, 0.18);
+
+    /* Hero / page gradient (light) */
+    --page-hero-gradient: linear-gradient(to bottom, #E6F5EC, #F0FAF4, #E6F5EC);
+  }
+
+  .dark {
+    --bg-base: #081510;
+    --bg-elevated: #0F1F17;
+    --bg-raised: #1A3020;
+    --bg-glass: rgba(15, 31, 23, 0.85);
+
+    --text-primary: #F1F5F9;
+    --text-secondary: #94A3B8;
+    --text-muted: #475569;
+
+    --border: rgba(5, 150, 105, 0.2);
+    --border-active: rgba(5, 150, 105, 0.6);
+
+    --background: var(--bg-base);
+    --foreground: var(--text-primary);
+    --card: var(--bg-elevated);
+    --card-foreground: var(--text-primary);
+
+    /* Admin / UI component tokens */
+    --accent-primary:  #059669;
+    --accent-secondary: #10B981;
+    --bg-primary:   #081510;
+    --bg-card:      #0F1F17;
+    --bg-secondary: #1A3020;
+    --border-primary: rgba(5, 150, 105, 0.2);
+
+    /* Hero / page gradient (dark) */
+    --page-hero-gradient: linear-gradient(to bottom, #081510, #0F2B1E, #081510);
+  }
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: 'IranSansNumbers', 'IranSans', sans-serif;
+  --font-display: 'IranSansNumbers', 'IranSans', sans-serif;
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--bg-base);
+    color: var(--text-primary);
+    font-family: 'IranSansNumbers', 'IranSans', sans-serif;
+    line-height: 1.8;
+    direction: rtl;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'IranSansNumbers', 'IranSans', sans-serif;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+    color: var(--text-primary);
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  input, textarea, select {
+    font-family: 'IranSansNumbers', 'IranSans', sans-serif;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--secondary);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    background: linear-gradient(135deg, var(--secondary) 0%, var(--accent) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .glass {
+    background: var(--bg-glass);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+
+  .border-glow {
+    border: 1px solid var(--border);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .border-glow:hover {
+    border-color: var(--border-active);
+    box-shadow: 0 0 20px rgba(5, 150, 105, 0.15);
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+/* Ticker animation */
+@keyframes ticker {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(100%); }
+}
+
+@keyframes pulse-ring {
+  0% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(1.5); opacity: 0; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
